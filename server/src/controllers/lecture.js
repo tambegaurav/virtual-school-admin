@@ -1,4 +1,5 @@
 import Lecture from "../models/lecture.model.js";
+import mongoose from "mongoose";
 
 // router.post("/", createLecture);
 export const createLecture = async (req, res) => {

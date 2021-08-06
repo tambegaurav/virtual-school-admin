@@ -14,7 +14,7 @@ const Navbar = () => {
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    history.push("/auth");
+    history.push("/");
     setUser(null);
   };
   console.log(user);
@@ -37,11 +37,21 @@ const Navbar = () => {
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
-        {user?.result ? (
+        {user ? (
           <div className={classes.profile}>
+            <Button
+              component={Link}
+              to="/dashboard"
+              variant="contained"
+              color="primary"
+            >
+              Dashboard
+            </Button>
+
             <Typography className={classes.userName} variant="h6">
-              {user?.result.name}
+              {user?.name}
             </Typography>
+
             <Button
               variant="contained"
               className={classes.logout}

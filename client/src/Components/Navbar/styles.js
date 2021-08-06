@@ -31,6 +31,7 @@ export default makeStyles((theme) => ({
   },
   profile: {
     display: "flex",
+    // marginLeft: "20px",
     justifyContent: "space-between",
     width: "400px",
     alignItems: "center",
@@ -41,10 +42,11 @@ export default makeStyles((theme) => ({
     },
   },
   logout: {
-    marginLeft: "20px",
+    marginLeft: "15px",
   },
   userName: {
     display: "flex",
+    justifyContent: "flex-end",
     alignItems: "center",
     textAlign: "center",
   },

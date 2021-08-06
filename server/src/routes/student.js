@@ -16,4 +16,16 @@ router.post("/create", async (req, res) => {
   }
 });
 
+router.get("/all", async (req, res) => {
+  try {
+    const students = await Student.find();
+
+    res.status(200).json({
+      data: students,
+    });
+  } catch (err) {
+    res.status(404).json({ messege: err });
+  }
+});
+
 export default router;

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import Input from "./Input";
+import { signin, signup } from "../../Redux/Auth/action.js";
 const initialState = {
   name: "",
   school_name: "",
@@ -23,12 +24,16 @@ const Auth = () => {
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
-    // setShowPassword(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    // console.log(form);
+    if (isSignup) {
+      dispatch(signup(form, history));
+    } else {
+      dispatch(signin(form, history));
+    }
   };
 
   return (

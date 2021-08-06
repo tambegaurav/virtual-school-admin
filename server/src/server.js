@@ -18,10 +18,16 @@ app.use("/teacher", teacherRoutes);
 app.use("/lecture", lectRoutes);
 app.use("/student", stdRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Education API");
+});
+
+const port = process.env.PORT || 5000;
+
 const start = async () => {
   await connect();
-  app.listen(5000, () => {
-    console.log("Listening on port 5000");
+  app.listen(port, () => {
+    console.log("Listening on port");
   });
 };
 
