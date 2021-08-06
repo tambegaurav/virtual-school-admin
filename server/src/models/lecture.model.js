@@ -4,8 +4,9 @@ const lectureSchema = mongoose.Schema(
   {
     name: String,
     teacher_id: String,
-    start_time: Date,
-    end_time: Date,
+    start_time: String,
+    end_time: String,
+    zoom_link: String,
     students: {
       type: [String],
       default: [],

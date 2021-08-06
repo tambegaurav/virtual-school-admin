@@ -5,15 +5,13 @@ const router = express.Router();
 
 router.post("/create", async (req, res) => {
   console.log(req.body);
-  const student = req.body;
-  const newStudent = new Student(student);
-
-  try {
+  const students = req.body;
+  for (var el of students) {
+    console.log(el);
+    const newStudent = new Student(el);
     await newStudent.save();
-    res.status(201).json(newStudent);
-  } catch (err) {
-    res.status(404).json("Error from createTeacher");
   }
+  res.status(201).json("Students Created");
 });
 
 router.get("/all", async (req, res) => {
