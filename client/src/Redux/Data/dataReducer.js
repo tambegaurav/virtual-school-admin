@@ -15,7 +15,7 @@ export const dataReducer = (state = init, { type, payload }) => {
     case FETCH_DATA_SUCCESS: {
       return {
         ...state,
-        lectures: payload.data,
+        lectures: payload,
       };
     }
 
@@ -25,14 +25,6 @@ export const dataReducer = (state = init, { type, payload }) => {
         lecture: payload.data,
       };
     }
-
-    // case CREATE_TEACHER_SUCCESS: {
-    //   return {
-    //     ...state,
-
-    //     lectures: [...state.lectures, payload],
-    //   };
-    // }
 
     case CREATE_LECTURE_SUCCESS: {
       return {

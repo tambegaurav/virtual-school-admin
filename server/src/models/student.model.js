@@ -4,6 +4,8 @@ const studentSchema = mongoose.Schema(
   {
     name: String,
     standard: String,
+    username: String,
+    password: String,
   },
   {
     timestamps: true,

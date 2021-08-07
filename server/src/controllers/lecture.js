@@ -5,20 +5,18 @@ import mongoose from "mongoose";
 export const createLecture = async (req, res) => {
   console.log(req.body);
   const lecture = req.body;
-  const newLecture = new Lecture(lecture);
 
-  try {
+  for (var el of lecture) {
+    const newLecture = new Lecture(el);
     await newLecture.save();
-    res.status(201).json(newLecture);
-  } catch (err) {
-    res.status(404).json("Error from createLecture");
   }
+  res.status(201).json("Lectures Created");
 };
 
 // router.get("/", getAllLectures);
 export const getAllLectures = async (req, res) => {
   try {
-    const lectures = await Lecture.find();
+    const lectures = await Lecture.find().sort({ start_time: 1 });
 
     res.status(200).json({
       data: lectures,
