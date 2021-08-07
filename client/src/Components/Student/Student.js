@@ -91,11 +91,15 @@ export default Student;
 function Classes({ onSubmit, key }) {
   const [name, setName] = useState("");
   const [standard, setStandard] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleAdd = () => {
     let obj = {
       name,
       standard,
+      username,
+      password,
     };
     console.log(obj);
     onSubmit(obj);
@@ -103,6 +107,7 @@ function Classes({ onSubmit, key }) {
 
   return (
     <div
+      key={key}
       style={{ display: "flex", justifyContent: "center", gap: 20, margin: 20 }}
     >
       <TextField
@@ -121,6 +126,22 @@ function Classes({ onSubmit, key }) {
         required
         label={"Standard"}
         type={"text"}
+      />
+      <TextField
+        name={username}
+        onChange={(e) => setUsername(e.target.value)}
+        variant="outlined"
+        required
+        label={"Username"}
+        type={"text"}
+      />
+      <TextField
+        name={password}
+        onChange={(e) => setPassword(e.target.value)}
+        variant="outlined"
+        required
+        label={"Password"}
+        type={"password"}
       />
 
       <Button variant="contained" color="secondary" onClick={handleAdd}>
