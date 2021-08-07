@@ -3,11 +3,14 @@ import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { TextField, Button } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { createLecture } from "../../Redux/Data/actions";
 
 const Lecture = () => {
   const [classes, setClasses] = useState(0);
   const history = useHistory();
   const [classData, setClassData] = useState([]);
+  const dispatch = useDispatch();
 
   const handleCancel = () => {
     history.push("/dashboard");
@@ -20,17 +23,11 @@ const Lecture = () => {
 
   const handleSubmit = () => {
     let obj = {
-      // teacher_id: userData.obj["_id"],
       classes: [...classData],
     };
-    console.log(obj);
-
-    axios.post("http://localhost:5000/teacher", obj)
-      .then((res) => {
-        alert("Lecture Added");
-        history.push("/dashboard");
-      })
-      .catch((err) => console.log(err));
+    console.log(obj.classes);
+    dispatch(createLecture(obj.classes));
+    history.push("/dashboard");
   };
 
   const addClasses = () => {
@@ -110,6 +107,7 @@ function Classes({ onSubmit, key }) {
 
   return (
     <div
+      key={key}
       style={{ display: "flex", justifyContent: "center", gap: 20, margin: 20 }}
     >
       <TextField

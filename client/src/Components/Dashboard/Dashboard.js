@@ -1,27 +1,22 @@
 import React from "react";
 import { AppBar, Typography, Toolbar, Button } from "@material-ui/core";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchposts } from "../../Redux/Data/actions";
+import LectureList from "../LectureList/LectureList";
+import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
+  const { lectures } = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+  console.log(lectures);
+
+  React.useEffect(() => {
+    dispatch(fetchposts());
+  }, [dispatch]);
   return (
-    <div
-      style={{
-        display: "grid",
-        margin: "30px",
-        gridTemplateColumns: "4fr 10fr",
-        gap: "20px",
-      }}
-    >
-      <div
-        style={{
-          border: "1px solid black",
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-          alignItems: "center",
-          gap: 10,
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.buttons}>
         <Button
           component={Link}
           to="/createLecture"
@@ -62,7 +57,9 @@ const Dashboard = () => {
           <span style={{ marginLeft: 20 }}> Create Students </span>
         </Button>
       </div>
-      <div style={{ border: "1px solid black" }}>Right</div>
+      <div>
+        <LectureList lectures={lectures} />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  margin: 30px;
+  grid-template-columns: 4fr 10fr;
+  gap: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+}
