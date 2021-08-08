@@ -3,6 +3,7 @@ import { Switch, Route, Link, Redirect } from "react-router-dom";
 import Auth from "./Components/Auth/Auth";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Home from "./Components/Home/Home";
+import Details from "./Components/LectDetails/Details";
 import Lecture from "./Components/Lecture/Lecture";
 import Navbar from "./Components/Navbar/Navbar";
 import Student from "./Components/Student/Student";
@@ -26,6 +27,9 @@ const Routes = () => {
         </Route>
         <Route path="/createStudent" exact>
           <Student />
+        </Route>
+        <Route path="/lecture/:id" exact>
+          <Details />
         </Route>
         <Route>
           <h2>404: Page Not Found</h2>
