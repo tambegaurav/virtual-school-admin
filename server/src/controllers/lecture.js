@@ -54,3 +54,13 @@ export const updateLecture = async (req, res) => {
   const updated = await Lecture.findByIdAndUpdate(id, lecture, { new: true }); // or {_id,lecture,{new:true}}
   res.status(200).json(updated);
 };
+
+export const deleteLecture = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send("No Lecture with that id");
+  await Lecture.findByIdAndRemove(id);
+  res.json("Lecture Deleted Successfully");
+};

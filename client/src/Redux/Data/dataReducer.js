@@ -3,6 +3,7 @@ import {
   CREATE_LECTURE_SUCCESS,
   FETCH_LECTURE_SUCCESS,
   ZOIN_LECTURE_SUCCESS,
+  DELETE_POST,
 } from "./actionTypes";
 
 const init = {
@@ -37,6 +38,12 @@ export const dataReducer = (state = init, { type, payload }) => {
       return {
         ...state,
         lectures: payload,
+      };
+    }
+    case DELETE_POST: {
+      return {
+        ...state,
+        lectures: state.lectures.filter((p) => p._id !== payload),
       };
     }
 

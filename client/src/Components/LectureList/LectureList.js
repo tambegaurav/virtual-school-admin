@@ -1,13 +1,20 @@
-import { Paper, Typography } from "@material-ui/core";
+import { Paper, Typography, Button } from "@material-ui/core";
 import React from "react";
+import { deletePost } from "../../Redux/Data/actions";
+import { useDispatch } from "react-redux";
 
 const LectureList = ({ lectures }) => {
+  const dispatch = useDispatch();
+  const handleDelete = (id) => {
+    dispatch(deletePost(id));
+  };
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         gap: 15,
+        // padding: 20,
         // alignItems: "center",
         // justifyContent: "center",
         // border: "1px solid black",
@@ -17,7 +24,7 @@ const LectureList = ({ lectures }) => {
       {lectures?.map((lecture, id) => (
         <Paper
           key={id}
-          style={{ width: "70%", justifyContent: "center" }}
+          style={{ width: "70%", justifyContent: "center", padding: "10px" }}
           elevation={4}
         >
           <Typography component="h2" variant="h4">
@@ -26,6 +33,14 @@ const LectureList = ({ lectures }) => {
           <Typography variant="h5" gutterBottom>
             {`Start:${lecture.start_time} - End:${lecture.end_time}`}
           </Typography>
+          <Button
+            variant="contained"
+            // className={classes.logout}
+            color="secondary"
+            onClick={() => handleDelete(lecture._id)}
+          >
+            DELETE
+          </Button>
         </Paper>
       ))}
     </div>

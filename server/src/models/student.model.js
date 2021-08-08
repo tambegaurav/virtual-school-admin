@@ -6,6 +6,7 @@ const studentSchema = mongoose.Schema(
     standard: String,
     username: String,
     password: String,
+    img:String
   },
   {
     timestamps: true,

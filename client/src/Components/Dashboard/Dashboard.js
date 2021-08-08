@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     dispatch(fetchposts());
-  }, [dispatch]);
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.buttons}>

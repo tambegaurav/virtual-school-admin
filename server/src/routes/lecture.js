@@ -6,8 +6,10 @@ import {
   getAllLectures,
   getLecture,
   updateLecture,
+  deleteLecture,
 } from "../controllers/lecture.js";
 
+router.delete("/:id", deleteLecture);
 router.get("/:id", getLecture);
 router.post("/", createLecture);
 router.get("/", getAllLectures);

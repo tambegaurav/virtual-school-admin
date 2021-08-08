@@ -33,7 +33,7 @@ const Navbar = () => {
           variant="h2"
           align="center"
         >
-          Home
+          Virtual-School
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>

@@ -93,6 +93,7 @@ function Classes({ onSubmit, key }) {
   const [standard, setStandard] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [img, setImg] = useState("");
 
   const handleAdd = () => {
     let obj = {
@@ -100,6 +101,7 @@ function Classes({ onSubmit, key }) {
       standard,
       username,
       password,
+      img,
     };
     console.log(obj);
     onSubmit(obj);
@@ -142,6 +144,14 @@ function Classes({ onSubmit, key }) {
         required
         label={"Password"}
         type={"password"}
+      />
+      <TextField
+        name={img}
+        onChange={(e) => setImg(e.target.value)}
+        variant="outlined"
+        required
+        label={"Image"}
+        type={"text"}
       />
 
       <Button variant="contained" color="secondary" onClick={handleAdd}>

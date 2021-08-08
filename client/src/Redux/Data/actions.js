@@ -1,5 +1,9 @@
 import axios from "axios";
-import { FETCH_DATA_SUCCESS, CREATE_LECTURE_SUCCESS } from "./actionTypes";
+import {
+  FETCH_DATA_SUCCESS,
+  DELETE_POST,
+  CREATE_LECTURE_SUCCESS,
+} from "./actionTypes";
 
 const API = axios.create({ baseURL: "https://educationgt.herokuapp.com" });
 
@@ -48,4 +52,11 @@ export const createLecture = (lect, history) => (dispatch) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+export const deletePost = (id) => (dispatch) => {
+  return axios
+    .delete(`https://educationgt.herokuapp.com/lecture/${id}`, config)
+    .then(() => dispatch({ type: DELETE_POST, payload: id }))
+    .catch((err) => console.log(err));
 };
